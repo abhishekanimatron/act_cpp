@@ -1,0 +1,1 @@
+{"name":"Local: binaryAddition","url":"d:\\My_Documents\\act\\functions\\binaryAddition.cpp","tests":[{"id":1623005526705,"input":"10101\n11010","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\My_Documents\\act\\functions\\binaryAddition.cpp","group":"local","local":true}
