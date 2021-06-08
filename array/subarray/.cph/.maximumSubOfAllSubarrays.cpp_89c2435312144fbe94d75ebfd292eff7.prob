@@ -1,0 +1,1 @@
+{"name":"Local: maximumSubOfAllSubarrays","url":"d:\\My_Documents\\act\\array\\subarray\\maximumSubOfAllSubarrays.cpp","tests":[{"id":1623163496520,"input":"6\n1 -4 3 -7 4 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\My_Documents\\act\\array\\subarray\\maximumSubOfAllSubarrays.cpp","group":"local","local":true}

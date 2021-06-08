@@ -1,0 +1,1 @@
+{"name":"Local: printAllSubarrays","url":"d:\\My_Documents\\act\\array\\subarray\\printAllSubarrays.cpp","tests":[{"id":1623162745127,"input":"4\n1 7 4 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\My_Documents\\act\\array\\subarray\\printAllSubarrays.cpp","group":"local","local":true}
