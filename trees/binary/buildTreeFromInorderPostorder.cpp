@@ -26,28 +26,29 @@ int search(int inorder[], int start, int end, int current)
     return -1;
 }
 
-Node *buildTree(int preorder[], int inorder[], int start, int end)
+Node *buildTree(int postorder[], int inorder[], int start, int end)
 {
-    //traversing index
-    static int index = 0;
-    //what if
+    //traversing index number, we pick index of root element which is last in postorder sequence
+    static int index = 4;
+    //if inorder start > inorder end
     if (start > end)
         return NULL;
-    //preorder's first index is root node
-    int current = preorder[index];
-    index++;
+    //postorder's last index is root node
+    int current = postorder[index];
+    index--;
     //create and store value of that root node in a 'node' variable
     Node *node = new Node(current);
-    //base condition
+    //base condition, only one element left, no left or right child
     if (start == end)
-    {
         return node;
-    }
     // search for that element which we got on preorder in inorder for its index
     int pos = search(inorder, start, end, current);
-    // recursively call for left and right subtree building
-    node->left = buildTree(preorder, inorder, start, pos - 1);
-    node->right = buildTree(preorder, inorder, pos + 1, end);
+    // recursively call for right and left subtree building
+    //in postorder we call for right first, cause it is first from end : L ,R, Root
+    // from position + 1, from that it is our right subtree
+    node->right = buildTree(postorder, inorder, pos + 1, end);
+    // till position - 1, as till that it is our left subtree
+    node->left = buildTree(postorder, inorder, start, pos - 1);
 
     //return the node to build a tree
     return node;
@@ -65,9 +66,9 @@ void inorderPrint(Node *root)
 
 int main()
 {
-    int preorder[] = {1, 2, 4, 3, 5};
+    int postorder[] = {4, 2, 5, 3, 1};
     int inorder[] = {4, 2, 1, 5, 3};
 
-    Node *root = buildTree(preorder, inorder, 0, 4);
+    Node *root = buildTree(postorder, inorder, 0, 4);
     inorderPrint(root);
 }

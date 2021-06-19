@@ -26,26 +26,30 @@ int search(int inorder[], int start, int end, int current)
     return -1;
 }
 
-Node *buildTree(int postorder[], int inorder[], int start, int end)
+Node *buildTree(int preorder[], int inorder[], int start, int end)
 {
-    //traversing index number
-    static int index = 4;
-    //what if
+    //traversing index number, we pick index of root element which is first (0) in preorder sequence
+    static int index = 0;
+    //if inorder start > inorder end
     if (start > end)
         return NULL;
-    //postorder's last index is root node
-    int current = postorder[index];
-    index--;
+    //preorder's first index is root node, we store in current
+    int current = preorder[index];
+    index++;
     //create and store value of that root node in a 'node' variable
     Node *node = new Node(current);
-    //base condition
+    //base condition, only one element left, no left or right child
     if (start == end)
+    {
         return node;
+    }
     // search for that element which we got on preorder in inorder for its index
     int pos = search(inorder, start, end, current);
-    // recursively call for right and left subtree building
-    node->right = buildTree(postorder, inorder, pos + 1, end);
-    node->left = buildTree(postorder, inorder, start, pos - 1);
+    // recursively call for left and right subtree building
+    // till position - 1, as till that it is our left subtree
+    node->left = buildTree(preorder, inorder, start, pos - 1);
+    // from position + 1, from that it is our right subtree
+    node->right = buildTree(preorder, inorder, pos + 1, end);
 
     //return the node to build a tree
     return node;
@@ -63,9 +67,9 @@ void inorderPrint(Node *root)
 
 int main()
 {
-    int postorder[] = {4, 2, 5, 3, 1};
+    int preorder[] = {1, 2, 4, 3, 5};
     int inorder[] = {4, 2, 1, 5, 3};
 
-    Node *root = buildTree(postorder, inorder, 0, 4);
+    Node *root = buildTree(preorder, inorder, 0, 4);
     inorderPrint(root);
 }
