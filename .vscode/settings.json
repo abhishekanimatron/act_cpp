@@ -4,7 +4,8 @@
         "xstring": "cpp",
         "forward_list": "cpp",
         "list": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "new": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
