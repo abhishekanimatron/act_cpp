@@ -38,8 +38,57 @@ typedef set<int> SETI;
 
 int main()
 {
-    //Fast I/O
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+
+    //n: number of vertices, m: number of edges
+    int n, m;
+    cin >> n >> m;
+    // adjacency list
+    const int N = 1000;
+    VI adj[N];
+    FOR(i, 0, m, 1)
+    {
+        // take edges
+        int x, y;
+        cin >> x >> y;
+        // in list of x push y
+        adj[x].PB(y);
+        // in list of y push x
+        adj[y].PB(x);
+    }
+    O("Adjacency List:");
+    O("-------------------------");
+    FOR(i, 1, n + 1, 1)
+    {
+
+        cout << i << " -> ";
+        for (int x : adj[i])
+        {
+            cout << x << ", ";
+        }
+        cout << "\n";
+    }
+    O("-------------------------");
+    // Input:
+    // 7 7
+    // 1 2
+    // 1 3
+    // 2 4
+    // 2 5
+    // 2 6
+    // 2 7
+    // 3 7
+    // Output:
+    // Adjacency List:
+    // -------------------------
+    // 1 -> 2, 3,
+    // 2 -> 1, 4, 5, 6, 7,
+    // 3 -> 1, 7,
+    // 4 -> 2,
+    // 5 -> 2,
+    // 6 -> 2,
+    // 7 -> 2, 3,
+    // -------------------------
     return 0;
 }

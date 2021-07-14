@@ -38,8 +38,53 @@ typedef set<int> SETI;
 
 int main()
 {
-    //Fast I/O
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+
+    //n: number of vertices, m: number of edges
+    int n, m;
+    cin >> n >> m;
+    VVI adjmat(n + 1, VI(n + 1, 0)); // 0 to n, square matrix of order n initialized with 0s
+    FOR(i, 0, m, 1)
+    {
+        // take edges
+        int x, y;
+        cin >> x >> y;
+        //fill the cell with 1 indicating edge between them
+        adjmat[x][y] = 1;
+        adjmat[y][x] = 1;
+    }
+    O("Adjacency Matrix:");
+    O("-------------------------");
+    FOR(i, 1, n + 1, 1)
+    {
+        FOR(j, 1, n + 1, 1)
+        {
+            cout << adjmat[i][j] << " ";
+        }
+        O(" ");
+    }
+    O("-------------------------");
+    // Input:
+    // 7 7
+    // 1 2
+    // 1 3
+    // 2 4
+    // 2 5
+    // 2 6
+    // 2 7
+    // 3 7
+    // Output:
+    // Adjacency Matrix:
+    // -------------------------
+    // 0 1 1 0 0 0 0
+    // 1 0 0 1 1 1 1
+    // 1 0 0 0 0 0 1
+    // 0 1 0 0 0 0 0
+    // 0 1 0 0 0 0 0
+    // 0 1 0 0 0 0 0
+    // 0 1 1 0 0 0 0
+    // -------------------------
+
     return 0;
 }
